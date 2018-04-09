@@ -88,6 +88,21 @@
                </item>
                <item>
                 <property name="text">
+                 <string>Torus</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Joda</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Cessna</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
                  <string>Duck</string>
                 </property>
                </item>
