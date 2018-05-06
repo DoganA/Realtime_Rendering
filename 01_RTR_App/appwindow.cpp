@@ -2,6 +2,7 @@
  *   Implementation of class AppWindow for the RTR demo App
  *   Author: Hartmut Schirmacher
  *
+ * action handler, wenn buttons gedrückt werden @Dogan
  */
 
 

@@ -37,13 +37,28 @@ Scene::Scene(QWidget* parent) :
     meshes_["Duck"]    = make_shared<Mesh>(":/models/duck/duck.obj", mat);
     meshes_["Teapot"]  = make_shared<Mesh>(":/models/teapot/teapot.obj", mat);
 
+    meshes_["Goblin"]  = make_shared<Mesh>(":/models/goblin.obj", mat);
+    meshes_["Yoda"]  = make_shared<Mesh>(":/models/yoda/yoda.obj", mat);
+    meshes_["Torus"]  = make_shared<Mesh>(":/models/torus.obj", mat);
+    meshes_["Cessna"]  = make_shared<Mesh>(":/models/cessna.obj", mat);
+    meshes_["Torus"]   = make_shared<Mesh>(":/models/torus.obj", mat);
+
     // add meshes of some procedural geometry objects (not loaded from OBJ files)
     meshes_["Cube"]   = make_shared<Mesh>(make_shared<geom::Cube>(), mat);
 
+    //------------------------------------------------
     // pack each mesh into a scene node, scaled to standard size [1,1,1]
     nodes_["Cube"]    = make_shared<Node>(meshes_["Cube"],   Node::Transform::ScaleToOne);
     nodes_["Duck"]    = make_shared<Node>(meshes_["Duck"],   Node::Transform::ScaleToOne);
     nodes_["Teapot"]  = make_shared<Node>(meshes_["Teapot"], Node::Transform::ScaleToOne);
+
+    nodes_["Goblin"]   = make_shared<Node>(meshes_["Goblin"], Node::Transform::ScaleToOne);
+    nodes_["Yoda"]   = make_shared<Node>(meshes_["Yoda"], Node::Transform::ScaleToOne);
+    nodes_["Torus"]  = make_shared<Node>(meshes_["Torus"], Node::Transform::ScaleToOne);
+    nodes_["Cessna"] = make_shared<Node>(meshes_["Cessna"], Node::Transform::ScaleToOne);
+    nodes_["Goblin"] = make_shared<Node>(meshes_["Goblin"], Node::Transform::ScaleToOne);
+
+
 
     // world contains the scene plus the camera
     nodes_["World"] = make_shared<Node>();

@@ -27,7 +27,9 @@ HEADERS      += \
     navigator/position_navigator.h \
     navigator/rotate_y.h \
     scenecontroller.h \
-    rtr_util.h
+    rtr_util.h \
+    material/toon.h \
+    material/dot.h
 
 # C++ SOURCE FILES TO BE COMPILED AND LINKED TOGETHER
 SOURCES      += \
@@ -49,7 +51,9 @@ SOURCES      += \
     navigator/position_navigator.cpp \
     navigator/rotate_y.cpp \
     scenecontroller.cpp \
-    rtr_util.cpp
+    rtr_util.cpp \
+    material/toon.cpp \
+    material/dot.cpp
 
 # RESOURCE FILES TO BE PROCESSED BY QT
 RESOURCES    += \
@@ -69,3 +73,9 @@ shaders.depends += \
     $$PWD/assets/shaders/phong.frag $$PWD/assets/shaders/phong.vert 
 shaders.commands =
 QMAKE_EXTRA_TARGETS += shaders
+
+DISTFILES += \
+    shaders/cel.frag \
+    shaders/cel.vert \
+    shaders/cel.vert \
+    shaders/dot.frag
