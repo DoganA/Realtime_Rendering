@@ -30,6 +30,12 @@ void RotateY::keyPressEvent(QKeyEvent *event)
         case Qt::Key_Down:
             setDistance(distance_to_center_+zoom_speed_);
             break;
+        case Qt::Key_Plus:
+            setDistance(distance_to_center_-zoom_speed_);
+            break;
+        case Qt::Key_Minus:
+            setDistance(distance_to_center_+zoom_speed_);
+            break;
         default:
             return;
     }
@@ -75,16 +81,39 @@ void RotateY::updateTransformation_()
 {
     QMatrix4x4 mat;
 
+    QVector3D qvector = getQVector3DOfAxis( );
     // third, rotate around Y axis
-    mat.rotate(rotation_angle_, QVector3D(0,1,0));
+    mat.rotate(rotation_angle_, qvector);
 
     // second, elevate node above X-Z axis by rotating around -X
-    mat.rotate(elevation_angle_, QVector3D(-1,0,0));
+    mat.rotate(elevation_angle_, qvector);
 
     // first, translate along camera axis
     mat.translate(0, 0, distance_to_center_);
 
     // update matrix in camera node
     node_->transformation = mat;
+}
+RotateY::Axis RotateY::getRotateAxis(){
+    return selectedAxis;
+}
+
+QVector3D RotateY::getQVector3DOfAxis(){
+
+
+    switch (getRotateAxis()) {
+        case X:
+            return  QVector3D(-1,0,0);
+
+        case Y:
+            return  QVector3D(0,-1,0);
+
+        case Z:
+            return  QVector3D(0,0,-1);
+
+        default:
+            return  rotateVector;
+    }
+
 }
 

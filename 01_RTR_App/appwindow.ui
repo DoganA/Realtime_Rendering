@@ -131,7 +131,7 @@
                </item>
                <item>
                 <property name="text">
-                 <string>Toon</string>
+                 <string>Toon/Cel</string>
                 </property>
                </item>
                <item>
@@ -155,6 +155,12 @@
              </property>
              <item>
               <widget class="QWidget" name="widget_2" native="true">
+               <property name="minimumSize">
+                <size>
+                 <width>180</width>
+                 <height>0</height>
+                </size>
+               </property>
                <layout class="QGridLayout" name="gridLayout">
                 <property name="leftMargin">
                  <number>0</number>
@@ -175,7 +181,14 @@
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="2">
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_5">
+                  <property name="text">
+                   <string>Steps of discretize</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
                  <widget class="QSlider" name="light0Slider">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -195,6 +208,13 @@
                  </widget>
                 </item>
                </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="hSldrStepsOfDiscretize">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
               </widget>
              </item>
             </layout>

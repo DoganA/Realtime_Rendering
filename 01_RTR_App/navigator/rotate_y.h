@@ -32,6 +32,9 @@ public:
     // add/subtract to/form current rotation angle
     RotateY& rotate(float degrees);
 
+    RotateY getRotateAxis();
+    QVector3D getQVector3DOfAxis();
+
 protected:
 
     float distance_to_center_ = 1.0;
