@@ -1,6 +1,6 @@
-#include "dot.h"
+//#include "dot.h"
 
-dot::dot()
-{
+//dot::dot()
+//{
 
-}
+//}

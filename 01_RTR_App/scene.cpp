@@ -15,8 +15,9 @@
 using namespace std;
 
 Scene::Scene(QWidget* parent) :
-    QOpenGLFunctions(QOpenGLContext::currentContext()),
+    QOpenGLFunctions(context),
     parent_(parent),
+    timer_(),
     firstDrawTime_(clock_.now()),
     lastDrawTime_(clock_.now())
 {
@@ -103,8 +104,7 @@ void Scene::draw_()
 }
 
 // set camera based on node position in scene graph
-Camera
-Scene::createCamera() {
+Camera Scene::createCamera() {
 
     // derive aspect ratio from viewport size
     float aspect = float(parent_->width())/float(parent_->height());
@@ -151,6 +151,35 @@ void Scene::draw_scene_()
         glBlendFunc(GL_ONE,GL_ONE);
         glDepthFunc(GL_EQUAL);
     }
+}
+
+// helper to load shaders and create programs
+shared_ptr<QOpenGLShaderProgram> Scene::createProgram(const string& vertex,
+                                                      const string& fragment,
+                                                      const string& geom)
+{
+    auto p = make_shared<QOpenGLShaderProgram>();
+    if(!p->addShaderFromSourceFile(QOpenGLShader::Vertex, vertex.c_str()))
+    {
+        qFatal("could not add vertex shader");
+    }
+    if(!p->addShaderFromSourceFile(QOpenGLShader::Fragment, fragment.c_str()))
+    {
+        qFatal("could not add fragment shader");
+    }
+    if(!geom.empty())
+    {
+        if(!p->addShaderFromSourceFile(QOpenGLShader::Geometry, geom.c_str()))
+        {
+            qFatal("could not add geometry shader");
+        }
+    }
+    if(!p->link())
+    {
+        qFatal("could not link shader program");
+    }
+
+    return p;
 }
 
 

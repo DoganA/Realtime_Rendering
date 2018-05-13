@@ -1,11 +1,11 @@
-#ifndef DOT_H
-#define DOT_H
+//#ifndef DOT_H
+//#define DOT_H
 
 
-class dot
-{
-public:
-    dot();
-};
+//class dot
+//{
+//public:
+//    dot();
+//};
 
-#endif // DOT_H
+//#endif // DOT_H

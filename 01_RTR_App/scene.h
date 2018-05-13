@@ -37,7 +37,7 @@ public:
      * @brief Scene constructor builds up the initial scene content including camera and light
      * @param parent the parent widget required to query rendering viewport size
      */
-    explicit Scene(QWidget* parent);
+    explicit Scene(QWidget* parent, QOpenGLContext *context);
 
 protected:
 
@@ -65,6 +65,11 @@ protected:
     // light nodes for any number of lights
     std::vector<std::shared_ptr<Node>> lightNodes_;
 
+    /* Changed for task 1 */
+    // helper for creating programs from shader files.
+    std::shared_ptr<QOpenGLShaderProgram> createProgram(const std::string& vertex,
+                                                        const std::string& fragment,
+                                                        const std::string& geom = "");
 
 private:
 
@@ -82,5 +87,7 @@ private:
     std::chrono::time_point<std::chrono::high_resolution_clock> firstDrawTime_;
     std::chrono::time_point<std::chrono::high_resolution_clock> lastDrawTime_;
 
+    /* Changed for task 1 */
+    std::shared_ptr<QOpenGLShaderProgram> createProgram(const std::string& vertex, const std::string& fragment, const std::string& geom);
 };
 

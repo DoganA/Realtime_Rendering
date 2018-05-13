@@ -25,10 +25,10 @@ void RotateY::keyPressEvent(QKeyEvent *event)
             rotate(+rotation_speed_);
             break;
         case Qt::Key_Up:
-            setDistance(distance_to_center_-zoom_speed_);
+            rotateX(+rotation_speed_);
             break;
         case Qt::Key_Down:
-            setDistance(distance_to_center_+zoom_speed_);
+            rotateX(-rotation_speed_);
             break;
         case Qt::Key_Plus:
             setDistance(distance_to_center_-zoom_speed_);
@@ -39,7 +39,6 @@ void RotateY::keyPressEvent(QKeyEvent *event)
         default:
             return;
     }
-
 }
 
 RotateY &RotateY::setElevationAngle(float degrees)
@@ -94,6 +93,14 @@ void RotateY::updateTransformation_()
     // update matrix in camera node
     node_->transformation = mat;
 }
+
+RotateY& RotateY::rotateX(float degrees)
+{
+    elevation_angle_ = elevation_angle_ + degrees;
+    updateTransformation_();
+    return *this;
+}
+
 RotateY::Axis RotateY::getRotateAxis(){
     return selectedAxis;
 }
